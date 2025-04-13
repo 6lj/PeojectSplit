@@ -1,68 +1,26 @@
-const translations = {
-    'Generate ID': 'انشاء معرف',
-    'Hello': 'مرحبا',
-    'Goodbye': 'وداعا',
-    'Thank you': 'شكرا',
-    'Please': 'من فضلك',
-    'Yes': 'نعم',
-    'No': 'لا',
-    'Sorry': 'آسف',
-    'Help': 'مساعدة',
-    'Appointment Scheduling and Booking System': 'نظام جدولة وحجز المواعيد',
-};
+const translations = [
+    { english: "Hello", arabic: "مرحبا" },
+    { english: "Thank you", arabic: "شكرا" },
+    { english: "Goodbye", arabic: "وداعا" },
+    { english: "Please", arabic: "من فضلك" },
+    { english: "Yes", arabic: "نعم" },
+    { english: "No", arabic: "لا" },
+    { english: "Excuse me", arabic: "عفوا" },
+    { english: "Welcome", arabic: "مرحبًا" },
+    { english: "Good Morning", arabic: "صباح الخير" },
+    { english: "Good Night", arabic: "تصبح على خير" },
+    { english: "How are you?", arabic: "كيف حالك؟" },
+    { english: "I'm fine", arabic: "أنا بخير" },
+    { english: "What is your name?", arabic: "ما اسمك؟" },
+    { english: "My name is...", arabic: "اسمي ..." },
+    { english: "Where is the bathroom?", arabic: "أين الحمام؟" },
+    { english: "Help!", arabic: "نجدة!" },
+    { english: "I don't understand", arabic: "لا أفهم" },
+    { english: "Do you speak English?", arabic: "هل تتحدث الإنجليزية؟" },
+    { english: "I love you", arabic: "أحبك" },
+    { english: "Happy Birthday", arabic: "عيد ميلاد سعيد" }
+     { english: "Generate ID", arabic: "عيد ميلاد سعيد" }
+];
 
-let isEnglish = false;
-
-function translateText(text) {
-    if (isEnglish) {
-        return Object.keys(translations).find(key => translations[key] === text) || text; 
-    }
-    let words = text.split(" ");
-    let translated = words.map(word => translations[word] || word).join(" ");
-    return translated;
-}
-
-function walkTextNodes(node) {
-    if (node.nodeType === 3) { 
-        const originalText = node.data.trim();
-        if (originalText) {
-            if (!node.parentElement.dataset.originalText) {
-                node.parentElement.dataset.originalText = originalText;
-            }
-            node.data = translateText(originalText);
-        }
-    } else if (node.nodeType === 1 && node.tagName !== 'SCRIPT' && node.tagName !== 'STYLE') { 
-        for (let child of node.childNodes) {
-            walkTextNodes(child);
-        }
-    }
-}
-
-function toggleLanguage() {
-    const button = document.querySelector('.lang-button');
-    const html = document.documentElement;
-
-    isEnglish = !isEnglish;
-
-    if (isEnglish) {
-        button.textContent = 'العربية'; // Switch to Arabic
-        html.setAttribute('lang', 'en'); // Set language attribute to English
-        html.setAttribute('dir', 'ltr'); // Left-to-right direction
-        document.title = translateText(document.title); // Translate title
-        walkTextNodes(document.body); 
-    } else {
-        button.textContent = 'English'; // Switch to English
-        html.setAttribute('lang', 'ar'); // Set language attribute to Arabic
-        html.setAttribute('dir', 'rtl'); // Right-to-left direction
-        document.title = "نظام جدولة وحجز المواعيد"; // Arabic title
-        const allElements = document.body.getElementsByTagName('*');
-        for (let element of allElements) {
-            if (element.dataset.originalText) {
-                element.textContent = element.dataset.originalText; // Restore original text
-            }
-        }
-    }
-}
-
-// Expose the toggleLanguage function to the global scope
-window.toggleLanguage = toggleLanguage;
+// Expose just the Arabic translations to the global scope
+const words = translations.map(translation => translation.arabic);
