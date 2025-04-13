@@ -1,6 +1,6 @@
 // Words to translate
 const words = [
-    'Hello',
+    'محممد',
     'Goodbye',
     'Thank you',
     'Please',
