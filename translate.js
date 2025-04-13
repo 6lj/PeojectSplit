@@ -14,7 +14,9 @@ const translations = {
 let isEnglish = false;
 
 function translateText(text) {
-    if (!isEnglish) return text; 
+    if (isEnglish) {
+        return Object.keys(translations).find(key => translations[key] === text) || text; 
+    }
     let words = text.split(" ");
     let translated = words.map(word => translations[word] || word).join(" ");
     return translated;
