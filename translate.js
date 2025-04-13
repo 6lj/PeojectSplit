@@ -1,11 +1,11 @@
-// Words to translate
+// Arabic words
 const words = [
-    'محممد',
-    'Goodbye',
-    'Thank you',
-    'Please',
-    'Yes',
-    'No',
-    'Sorry',
-    'Help'
+    'مرحبا',   // Hello
+    'وداعا',   // Goodbye
+    'شكرا',   // Thank you
+    'من فضلك', // Please
+    'نعم',     // Yes
+    'لا',      // No
+    'آسف',     // Sorry
+    'مساعدة'   // Help
 ];
