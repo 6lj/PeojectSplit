@@ -1,4 +1,3 @@
-
 const translations = {
     'انشاء معرف': 'Generate ID',
     'مرحبا': 'Hello',
@@ -15,5 +14,4 @@ function translate(word) {
     return translations[word] || word; 
 }
 
-
-window.translate = translate;
+window.translate = translate; 
