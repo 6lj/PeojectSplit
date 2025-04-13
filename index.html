@@ -28,21 +28,19 @@
     <button id="translate-button">Translate</button> <!-- Button for translation -->
 
     <script>
-        // Define translations directly in the JavaScript
+
         const translations = {
             "Generate ID": "انشاء معرف",
-            "Hello": "مرحبا",  // Example of other translations
+            "Hello": "مرحبا",  
             "Goodbye": "وداعا",
             "Thank you": "شكرا",
-            // Add more translations as needed...
+
         };
 
-        // Function to display translations on the page
         function displayTranslations(words) {
             const translationsDiv = document.getElementById('translations');
-            translationsDiv.innerHTML = ''; // Clear previous content
+            translationsDiv.innerHTML = ''; 
 
-            // Create paragraph elements for each word and append to the div
             words.forEach(word => {
                 const p = document.createElement('p');
                 p.textContent = word;
@@ -50,23 +48,19 @@
             });
         }
 
-        // Function to translate the phrase "Generate ID"
         function translate() {
-            const translationOutput = translations["Generate ID"] || "Translation not found"; // Fallback if not found
-            alert(`Translated: ${translationOutput}`); // Show the translation
+            const translationOutput = translations["Generate ID"] || "Translation not found"; 
+            alert(`Translated: ${translationOutput}`); 
         }
 
-        // Event listener for the Generate ID button
         document.getElementById('generate-button').addEventListener('click', () => {
-            // Redirect to the specified URL
+
             window.location.href = 'https://peojectsplit.webcindario.com/index.html';
         });
 
-        // Event listener for the Translate button
         document.getElementById('translate-button').addEventListener('click', translate);
 
-        // When the page loads, display any predefined words (if available)
-        const words = Object.keys(translations); // Get the keys as words for display
+        const words = Object.keys(translations); 
         displayTranslations(words);
     </script>
 </body>
